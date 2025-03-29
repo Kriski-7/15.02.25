@@ -22,8 +22,8 @@ public class StudentController {
         Student saveStudent = new Student(countId, name, email, age);
         studentList.add(saveStudent);
         return saveStudent.getId();
-    }
 
+    }
     @GetMapping("/student/{id}")
     public Student getStudentById(@PathVariable long id) {
 
