@@ -10,12 +10,7 @@ public class HelloController {
 
     @GetMapping("/hello")
     public String hello(@RequestParam String name) {
-        return "Hello, " + name;
+         return "Hello, " + name + "!";
     }
 
-    @GetMapping("/student")
-    public Student getStudent() {
-        Student st = new Student(1, "Zana", "z.@gmail", 14);
-        return st;
-    }
 }
