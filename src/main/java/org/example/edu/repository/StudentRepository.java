@@ -1,39 +1,14 @@
 package org.example.edu.repository;
 
 import org.example.edu.model.Student;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class StudentRepository {
-    private List<Student> studentList = new ArrayList<>();
+public interface StudentRepository extends JpaRepository<Student, Long> {
 
-    public List<Student> getStudentList() {
-        return studentList;
-    }
-
-    public long save(Student st) {
-        studentList.add(st);
-        return st.getId();
-    }
-
-    public Student getById(Long id) {
-        Student findStudent = null;
-
-        for (Student st : studentList) {
-            if (st.getId() == id) {
-                findStudent = st;
-            }
-        }
-        return findStudent;
-    }
-
-    public void deleteById(Long id) {
-        int indexDeleteStudent = -1;
-        for (int i = 0; i < studentList.size(); i++) {
-        }
-    }
 }
 
