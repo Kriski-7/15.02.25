@@ -16,7 +16,7 @@ public class StudentController {
 
     @GetMapping("/student")
     public List<Student> getStudentList() {
-        return studentList;
+        return repository.getStudentList();
     }
 
     @PostMapping("/student")
@@ -24,12 +24,12 @@ public class StudentController {
         countId = countId + 1;
         Student saveStudent = new Student(countId, name, email, age);
 
-        return repository.save(savedStudent);
+        return repository.save(saveStudent);
 
     }
     @GetMapping("/student/{id}")
     public Student getStudentById(@PathVariable long id) {
-    return repository.getById(id)
+    return repository.getById(id);
     }
 
     @DeleteMapping("/student/{id}")
