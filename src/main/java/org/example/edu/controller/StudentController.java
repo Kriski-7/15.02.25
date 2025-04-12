@@ -22,18 +22,30 @@ public class StudentController {
     @PostMapping("/student")
     public long saveStudent(@RequestParam String name, @RequestParam String email, @RequestParam int age) {
 
-        Student saveStudent = new Student( name, email, age);
+        Student saveStudent = new Student(name, email, age);
 
         return repository.save(saveStudent).getId();
 
     }
+
     @GetMapping("/student/{id}")
     public Student getStudentById(@PathVariable long id) {
-    return repository.getById(id);
+        return repository.getById(id);
     }
 
     @DeleteMapping("/student/{id}")
-    public void deleteStudentById(@PathVariable long id){
+    public void deleteStudentById(@PathVariable long id) {
         repository.deleteById(id);
     }
+
+    @PutMapping("/student/{id}")
+    public Student updateStudent(@PathVariable long id, @RequestBody Student st) {
+        Student student = repository.findById(id).get();
+        student.setName(st.getName());
+        student.setAge(st.getAge());
+        student.setEmail(st.getEmail());
+
+        return repository.save(student);
+    }
+
 }
